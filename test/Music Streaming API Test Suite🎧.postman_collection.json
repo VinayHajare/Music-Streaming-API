@@ -1,0 +1,720 @@
+{
+	"info": {
+		"_postman_id": "7d32c33c-0375-4bcb-96eb-8eb0f2354d7d",
+		"name": "Music Streaming API Test Suite🎧",
+		"description": "# 🚀 What?\n\nThis suite includes the collection of test sets to test the Music Streaming API managed in several parts -\n\n- User Management\n    \n- Song Management\n    \n- Playlist Management\n    \n- Music Discovery & Social Features\n    \n- Stream Songs and Playback History",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37944914"
+	},
+	"item": [
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"vinay\",\r\n    \"email\": \"vinayhajare2004@gmail.com\",\r\n    \"password\": \"vinay2324\",\r\n    \"bio\": \"I love music!!\",\r\n    \"profilePicture\": \"https://avatars.githubusercontent.com/u/106072427?s=96&v=4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						},
+						"description": "Register the user in the system"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vinayhajare2004@gmail.com\",\r\n    \"password\": \"vinay2324\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login the user and start the session"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/profile/vinay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"profile",
+								"vinay"
+							]
+						},
+						"description": "Retrieves the profile of the logged-in user"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTcyNzg3OTMzMCwiZXhwIjoxNzI3OTY1NzMwfQ.L68w3z0NJWkcXxjr4sDb1Q5Ax158ohqf16tYJN7tnok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bio\": \"I hate music!!\",\r\n    \"profilePicture\": \"https://vinayhajare.engineer/assets/images/logo.ico\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/profile/vinay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"profile",
+								"vinay"
+							]
+						},
+						"description": "Update the user profile"
+					},
+					"response": []
+				}
+			],
+			"description": "POST `api/auth/signup`: Register a new user.\n\nPOST `api/auth/login`: Authenticate a user.\n\nGET `api/profile/{username}`: Get user profile details.\n\nPUT `api/profile/{username}`: Update user profile details."
+		},
+		{
+			"name": "Song Management",
+			"item": [
+				{
+					"name": "Get All Songs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTcyNzg0MTU4NywiZXhwIjoxNzI3OTI3OTg3fQ.xc_dovPuIBjgDx8o5wmeGIWjQDLPyttAWwTz57JHJV0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/songs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"songs"
+							]
+						},
+						"description": "Retrieves all the songs available for streaming"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Song By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTcyNzg0MTU4NywiZXhwIjoxNzI3OTI3OTg3fQ.xc_dovPuIBjgDx8o5wmeGIWjQDLPyttAWwTz57JHJV0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/songs/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"songs",
+								"1"
+							]
+						},
+						"description": "Retrieves the song with given Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Song",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTcyNzg0MTU4NywiZXhwIjoxNzI3OTI3OTg3fQ.xc_dovPuIBjgDx8o5wmeGIWjQDLPyttAWwTz57JHJV0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/songs/search?artist=queen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"songs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "artist",
+									"value": "queen"
+								}
+							]
+						},
+						"description": "Search song based on title, artist, album, genre"
+					},
+					"response": []
+				}
+			],
+			"description": "GET `api/songs`: Get all the songs.\n\nGET `api/songs/search?queyParam=value`: Search for songs by criteria like title, artist, album, genre.\n\nGET `api/songs/{id}`: Get details of a specific song."
+		},
+		{
+			"name": "Playlist Management",
+			"item": [
+				{
+					"name": "Create Playlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "playlistName",
+									"value": "My Favorite Songs",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "vinay",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/playlists/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"playlists",
+								"create"
+							]
+						},
+						"description": "Create the playlist with given name for the logged-in user"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Song to Playlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "songId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/playlists/1/addSong",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"playlists",
+								"1",
+								"addSong"
+							]
+						},
+						"description": "Add the song to the playlist"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Playlists for a User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/playlists/user/vinay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"playlists",
+								"user",
+								"vinay"
+							]
+						},
+						"description": "Retrieve all playlist of the user"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a Playlist by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/playlists/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"playlists",
+								"1"
+							]
+						},
+						"description": "Retrieve the playlist based on Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Shuffle Playlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/playlists/1/shuffle",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"playlists",
+								"1",
+								"shuffle"
+							]
+						},
+						"description": "Shuffle the songs in the playlist"
+					},
+					"response": []
+				}
+			],
+			"description": "- POST `api/playlists/create` endpoint allows users to create a new playlist by providing the playlist name and username.\n    \n- POST `api/playlists/{playlistId}/addSong` endpoint allows users to add songs to a playlist.\n    \n- GET `api/playlists/user/{username}` endpoint retrieves all playlists for a specific user.\n    \n- GET `api/playlists/{playlistId}` endpoint retrieves a playlist by its ID.\n    \n- GET `api/playlists/{playlistId}/shuffle` endpoint shuffles the song in the playlist"
+		},
+		{
+			"name": "Music Discovery & Social Features",
+			"item": [
+				{
+					"name": "Recommend Songs by Genre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/discover/recommend/genre?genre=Pop",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discover",
+								"recommend",
+								"genre"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "Pop"
+								}
+							]
+						},
+						"description": "Recommend songs for given genre"
+					},
+					"response": []
+				},
+				{
+					"name": "Recommend Songs for User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/discover/recommend/user/vinay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discover",
+								"recommend",
+								"user",
+								"vinay"
+							]
+						},
+						"description": "Recommend songs for user"
+					},
+					"response": []
+				},
+				{
+					"name": "Follo Artist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "vinay",
+									"type": "text"
+								},
+								{
+									"key": "artistId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/discover/followArtist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discover",
+								"followArtist"
+							]
+						},
+						"description": "Follow a artist"
+					},
+					"response": []
+				},
+				{
+					"name": "Recommendations Based on History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/discover/recommendations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discover",
+								"recommendations"
+							]
+						},
+						"description": "Recommends 10 songs based on the users playback history"
+					},
+					"response": []
+				}
+			],
+			"description": "- GET `api/discover/recommend/genre` endpoint returns song recommendations based on the genre.\n    \n- GET `api/discover/recommend/user/{username}` endpoint returns recommendations for a specific user.\n    \n- POST `api/discover/followArtist` endpoint allows a user to follow an artist.\n    \n- GET `api/discover/recommendations` endpoint return the recommendations for a user based on playback history"
+		},
+		{
+			"name": "Stream Songs and Playback History",
+			"item": [
+				{
+					"name": "Stream a Song by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/stream/play/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stream",
+								"play",
+								"1"
+							]
+						},
+						"description": "Stream a songs with chunks to client side"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Playback History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5heSIsImlhdCI6MTczMzI5ODIyMCwiZXhwIjoxNzMzMzg0NjIwfQ.oFcrcCXPJ2xrij5nRBZ47SsXvk8gbWJFk6BiW1o-81I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/playback-history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"playback-history"
+							]
+						},
+						"description": "Return the playback history of the user"
+					},
+					"response": []
+				}
+			],
+			"description": "**`api/stream/play/{songId}`**: Streams the song file by its `songId`.\n\n- The song file is served as a resource, allowing the client (e.g., a music player) to stream it.\n    \n- The song is returned in chunks with the `inline` content-disposition header, which is suitable for continuous playback.\n    \n\n**`api/playback-history`** to retrieve the playback history for a currently logged-in user"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
