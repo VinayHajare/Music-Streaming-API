@@ -66,7 +66,7 @@ Welcome to the **Music Streaming API**, a robust backend system designed for a s
 ---
 
 ## 📦 Test Suite
-- We’ve included a detailed [Postman Test Suite](test/Music Streaming API Test Suite🎧.postman_collection.json) to help you test all the API features seamlessly.
+- We’ve included a detailed [Postman Test Suite](https://documenter.getpostman.com/view/37944914/2sAYBaBA96) to help you test all the API features seamlessly.
 
 ---
 
@@ -105,7 +105,7 @@ Welcome to the **Music Streaming API**, a robust backend system designed for a s
    mvn spring-boot:run
    ```
 
-4. Import the [Postman Test Suite](test/Music Streaming API Test Suite🎧.postman_collection.json) for testing.
+4. Import the [Postman Test Suite](test\Music Streaming API Test Suite🎧.postman_collection.json) for testing.
 
 ---
 
