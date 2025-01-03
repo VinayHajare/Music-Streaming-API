@@ -89,7 +89,7 @@ Welcome to the **Music Streaming API**, a robust backend system designed for a s
 ### Setup
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/VinayHajare/Music-Streaming-API.git
    cd music-streaming-api
    ```
 
